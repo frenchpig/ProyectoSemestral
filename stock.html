@@ -30,18 +30,11 @@
               <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Más </a>
                 <ul class="dropdown-menu fade-up">
-                <li><a class="dropdown-item" href="#"> Tienda</a></li>
-                <li><a class="dropdown-item" href="#"> Donde estamos?</a></li>
+                <li><a class="dropdown-item" href="index.html#tienda"> Tienda</a></li>
+                <li><a class="dropdown-item" href="#contactos"> Donde estamos?</a></li>
                 <li><a class="dropdown-item" href="#"> Proveedores </a></li>
                 </ul>
-            </li>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Tienda</a></li>
-                <li><a class="dropdown-item" href="#">Donde Estamos?</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Asistencia Clínica</a></li>
-              </ul>
-            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="login.html">Ingresar/Registrar</a>
             </li>
@@ -50,7 +43,7 @@
                 Administrador
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Stock</a></li>
+                <li><a class="dropdown-item" href="stock.html">Stock</a></li>
               </ul>
             </li>
             <!-- Carrito de compra -->
@@ -65,3 +58,101 @@
         </div>
       </div>
     </nav>
+    <!-- FIN DEL NAVBAR -->
+
+    <!-- Control de Stock -->
+    <div class="container mt-2">
+      <!-- Titulo de la seccion -->
+      <div class="row text-center">
+        <p class="fs-1">
+          Stock de Productos
+        </p>
+      </div>
+      <!-- Busqueda de Productos -->
+      <div class="row d-flex justify-content-center mb-4">
+        <div class="col col-lg-6">
+          <!-- Inicio del formulario -->
+          <form class="d-flex">
+            <!-- Input del producto -->
+            <input class="form-control me-2" type="search" placeholder="Buscar producto..." aria-label="Search">
+            <!-- Boton de busqueda -->
+            <button class="btn btn-outline-success me-1" type="submit"><i class="bi bi-search"></i></button>
+            <button class="btn btn-success"><i class="bi bi-plus-lg"></i></button>
+          </form>
+        </div>
+      </div>
+      <!-- Productos -->
+      <div class="container" id="productosStock">
+        <div class="row d-flex justify-content-around">
+          <!-- Primer Item -->
+        <div class="card" style="width: 18rem;">
+          <!-- Imagen del producto -->
+          <img src="img/platos.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <!-- Titulo del Producto -->
+            <h5 class="card-title">Set 3 Platos</h5>
+            <!-- Descripcion del Producto -->
+            <p class="card-text">Set de 3 platos multiusos, perfecto para tener organizada la comida de tu mascota. $15.000</p>
+            <!-- Boton para editar -->
+            <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+            <!-- Boton para eliminar -->
+            <a href="#" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <!-- Segundo Item -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/correa.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Correa Super Resistente</h5>
+            <p class="card-text">Correa con una resistencia increible, perfecta para animales pequeños y grandes. $4.000</p>
+            <!-- Boton para editar -->
+            <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+            <!-- Boton para eliminar -->
+            <a href="#" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        <!-- Tercer Item -->
+        <div class="card" style="width: 18rem;">
+          <img src="img/dogchow.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Dog Chow 18kg</h5>
+            <p class="card-text">18kg de comida de calidad, aprobado por el Servicio Agricola Ganadero. $43.000</p>
+            <!-- Boton para editar -->
+            <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+            <!-- Boton para eliminar -->
+            <a href="#" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+        </div>
+      </div>
+        
+    </div>
+
+</body>
+
+<footer class="text-center text-lg-start bg-light text-muted mt-5 border-0">
+  <section>
+    <div class="container ">
+      <div class="row d-flex justify-content-between">
+        <!-- Columna Info Empresa -->
+        <div class="col col-4 border" id="sobreNosotros">
+          <h6 class="text-uppercase fw-bold">
+            <i class="bi bi-building"></i>
+            PetShop
+          </h6>
+          <p>
+            Aqui encontraras los mejores accesorios para tu mascota. No dudes en contactarnos si necesitas ayuda.
+          </p>
+        </div>
+        <!-- Fin Columna Info Empresa -->
+        <div class="col col-4 border" id="contactos">
+          <h6 class="text-uppercase fw-bold">Contacto</h6>
+          <p><i class="bi bi-house-fill"></i> Av. Vicuña Mackenna 4917, San Joaquín</p>
+          <p><i class="bi bi-telephone-fill"></i> +56 9 1234 5678</p>
+          <p><i class="bi bi-envelope-fill"></i> pets4ever@petshop.cl</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+</html>
