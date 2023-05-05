@@ -48,39 +48,41 @@
                 <label for="email">Correo electrónico</label>
                 <input type="email" class="form-control" id="email" name="email" required>
               </div>
-              <div class="">
 
-                <div class="form-group">
-                  <label for="password">Contraseña</label>
-                  <input type="password" class="form-control" id="password" "
-                    required>
+                <div class="">
+                  <form>
+                    <div class="form-group">
+                      <label for="password">Contraseña</label>
+                      <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="confirm-password">Confirmar Contraseña</label>
+                      <input type="password" class="form-control" id="confirm-password" placeholder="Confirma tu contraseña" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                  </form>
                 </div>
-                <div class="form-group">
-                  <label for="confirm-password">Confirmar Contraseña</label>
-                  <input type="password" class="form-control" id="confirm-password" "
-                    required>
-                </div>
-                <button type="submit" class="btn btn-primary">Registrarse</button>
-
-              </div>
-
-              <!-- Script para validar la contraseña -->
-              <script>
-                $(document).ready(function () {
-                  $('form').submit(function (event) {
-                    event.preventDefault();
-                    var password = $('#password').val();
-                    var confirmPassword = $('#confirm-password').val();
-                    if (password !== confirmPassword) {
-                      alert('Las contraseñas no coinciden');
-                    } else {
-                      alert('Contraseña válida');
-                      // Aquí puedes realizar cualquier acción adicional que desees
-                    }
+              
+                <!-- Incluir los scripts de Bootstrap y jQuery -->
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+                <!-- Script para validar la contraseña -->
+                <script>
+                  $(document).ready(function() {
+                    $('form').submit(function(event) {
+                      event.preventDefault();
+                      var password = $('#password').val();
+                      var confirmPassword = $('#confirm-password').val();
+                      if (password !== confirmPassword) {
+                        alert('Las contraseñas no coinciden');
+                      } else {
+                        alert('Contraseña válida');
+                        // Aquí puedes realizar cualquier acción adicional que desees
+                      }
+                    });
                   });
-                });
-              </script>
-
+                </script>
+              </body>
             </form>
           </div>
         </div>
