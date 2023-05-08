@@ -7,7 +7,7 @@
     <!-- CSS BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <!-- CSS BOOTSTRAP ICONOS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- CSS PROPIO -->
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -83,74 +83,89 @@
           Stock de Productos
         </p>
       </div>
-      <!-- Busqueda de Productos -->
-      <div class="row d-flex justify-content-center mb-4">
-        <div class="col col-lg-6">
-          <!-- Inicio del formulario -->
-          <form class="d-flex">
-            <!-- Input del producto -->
-            <input class="form-control me-2" type="search" placeholder="Buscar producto..." aria-label="Search">
-            <!-- Boton de busqueda -->
-            <button class="btn btn-outline-success me-1" type="submit"><i class="bi bi-search"></i></button>
-            <button class="btn btn-success"><i class="bi bi-plus-lg"></i></button>
-          </form>
+
+      <!-- Agregar Productos -->
+      <div class="row">
+        <h3>Agregar Producto</h3>
+      </div>
+      <form id="formAgregarProductos" class="row d-flex justify-content-center needs-validation" novalidate>
+        <div class="col-md-4 col-sm-2">
+          <label for="prodNombre">Nombre:</label>
+          <input type="text" class="form-control" id="prodNombre" placeholder="Ingrese nombre del producto..." required>
+          <div class="invalid-feedback">
+            Porfavor ingrese nombre de producto.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="prodPrecio">Precio:</label>
+          <input type="number" class="form-control" id="prodPrecio" required>
+          <div class="invalid-feedback">
+            Porfavor ingrese precio de producto.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="prodCantidad">Cantidad en Stock:</label>
+          <input type="number" class="form-control" id="prodCantidad" required>
+          <div class="invalid-feedback">
+            Porfavor ingrese cantidad en stock de producto.
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label for="prodDescripcion">Descripcion: </label>
+          <input type="text" class="form-control" id="prodDescripcion" placeholder="Ingrese la descripcion del producto..." required>
+          <div class="invalid-feedback">
+            Porfavor ingrese descripcion de producto.
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label for="prodUrlImagen">URL de Imagen: </label>
+          <input type="text" class="form-control" id="prodUrlImagen" placeholder="Ingrese la URL de la imagen del producto..." required>
+          <div class="invalid-feedback">
+            Porfavor ingrese imagen de producto.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-verde mt-3 w-75">Agregar</button>
+      </form> 
+    </div>
+    <!-- Fin Agregar Productor -->
+
+    <!-- Productos disponibles + buscador -->
+    <div class="row d-flex justify-content-center mt-3">
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <input id="keyStorage" type="text" class="form-control"  aria-describedby="btnEliminarStorage">
+          <button class="btn btn-primary" type="button" id="btnBuscar"><i class="bi bi-search"></i></button>
         </div>
       </div>
-      <!-- Productos -->
-      <div class="container" id="productosStock">
-        <div class="row d-flex justify-content-around">
-          <!-- Primer Item -->
-        <div class="card" style="width: 18rem;">
-          <!-- Imagen del producto -->
-          <img src="img/platos.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <!-- Titulo del Producto -->
-            <h5 class="card-title">Set 3 Platos</h5>
-            <!-- Descripcion del Producto -->
-            <p class="card-text">Set de 3 platos multiusos, perfecto para tener organizada la comida de tu mascota. $15.000</p>
-            <!-- Boton para editar -->
-            <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-            <!-- Boton para eliminar -->
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmacion">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </div>
-        <!-- Segundo Item -->
-        <div class="card" style="width: 18rem;">
-          <img src="img/correa.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Correa Super Resistente</h5>
-            <p class="card-text">Correa con una resistencia increible, perfecta para animales pequeños y grandes. $4.000</p>
-            <!-- Boton para editar -->
-            <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-            <!-- Boton para eliminar -->
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmacion">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </div>
-        <!-- Tercer Item -->
-        <div class="card" style="width: 18rem;">
-          <img src="img/dogchow.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Dog Chow 18kg</h5>
-            <p class="card-text">18kg de comida de calidad, aprobado por el Servicio Agricola Ganadero. $43.000</p>
-            <!-- Boton para editar -->
-            <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-            <!-- Boton para eliminar -->
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmacion">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </div>
-        </div>
-      </div>
-        
     </div>
 
+    <div class="row d-flex justify-content-center">
+      <div class="col-8">
+        <table id="tabla" class="table mb-5">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Stock</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoTabla">
+    
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Fin Productos disponibles + buscador -->
+
+    <!-- JS JQUERY NO TOCAR -->
+    <script src="js/jquery-3.6.4.min.js"></script>
     <!-- JS BOOTSTRAP NO TOCAR -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <!-- JS Propio -->
+    <script src="js/validaciones.js"></script>
+    <script src="js/funciones.js"></script>
 </body>
 
 <footer class="text-center text-lg-start bg-light text-muted border-0 mt-auto" id="footerfinal">
