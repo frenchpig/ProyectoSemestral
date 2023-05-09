@@ -32,7 +32,6 @@ $(document).ready(function(){
 $(function () {
   $("#formAgregarProductos").on("submit", function (event) {
     event.preventDefault();
-    console.log("handler submit llamado");
     //Valida el Nombre del Producto
     let nombre = $("#prodNombre");
     if (nombre.val().length == 0) {
@@ -82,12 +81,6 @@ $(function () {
       url.removeClass("is-invalid");
       url.addClass("is-valid");
     }
-
-    console.log(nombre.hasClass("is-valid"));
-    console.log(precio.hasClass("is-valid"));
-    console.log(stock.hasClass("is-valid"));
-    console.log(descripcion.hasClass("is-valid"));
-    console.log(url.hasClass("is-valid"));
     
     if(nombre.hasClass("is-valid") && precio.hasClass("is-valid") && stock.hasClass("is-valid") && descripcion.hasClass("is-valid") && url.hasClass("is-valid")){
       guardarProducto(nombre,precio,stock,descripcion,url);
