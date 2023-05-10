@@ -1,8 +1,3 @@
-/* #mainCarousel{
-  display:flex;
-  justify-content: center;
-} */
-
 /* animacion de la barra en MAS Y ADMINISTRADOR */
 @media all and (min-width: 992px) {
 	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
@@ -36,3 +31,4 @@
   border: 5px solid #091321;
   border-radius: 10px;
 }
+

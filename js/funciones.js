@@ -44,21 +44,14 @@ function cargarTabla(){
       id = $(this).attr("id").slice(0,$(this).attr("id").length-2);
       conseguirProducto(id);
     });
-    botonEliminar.addClass("btn");
-    botonEliminar.addClass("btn-danger");
-    botonEliminar.addClass("btnEliminar");
-    botonEliminar.addClass("ms-1");
-    botonEditar.addClass("btn");
-    botonEditar.addClass("btn-primary");
-    botonEditar.addClass("btnEditar");
+    botonEliminar.addClass("btn btn-danger btnEliminar ms-1");
+    botonEditar.addClass("btn btn-primary btnEditar");
     let iconoLapiz = $("<i>");
     let iconoBasura = $("<i>");
     botonEliminar.append(iconoBasura);
     botonEditar.append(iconoLapiz);
-    iconoBasura.addClass("bi");
-    iconoBasura.addClass("bi-trash3-fill");
-    iconoLapiz.addClass("bi");
-    iconoLapiz.addClass("bi-pencil-square");
+    iconoBasura.addClass("bi bi-trash3-fill");
+    iconoLapiz.addClass("bi bi-pencil-square");
     botonEditar.append(iconoLapiz);
     row.append(columna);
     
@@ -128,4 +121,72 @@ function reiniciarModalEditar(){
   $("#edProdDescripcion").val("");
   $("#edProdUrlImagen").val("");
   $("#lblmodalEditar").text("Editar Producto");
+}
+
+//Buscar en STOCK
+$("#btnBuscar").on("click", function () {
+  let valor = $("#txtBuscar").val().toLowerCase();
+  $("table tbody tr").filter(function(){
+    $(this).toggle($(this).text().toLowerCase().indexOf(valor)>-1);
+  })
+});
+
+
+/*
+  <!-- Primer Item -->
+        <div class="card" style="width: 18rem;">
+          <!-- Imagen del producto -->
+          <img src="img/platos.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <!-- Titulo del Producto -->
+            <h5 class="card-title">Set 3 Platos</h5>
+            <!-- Descripcion del Producto -->
+            <p class="card-text">Set de 3 platos multiusos, perfecto para tener organizada la comida de tu mascota.
+              $15.000</p>
+            <!-- Boton para agregar al carrito -->
+            <a href="#" class="btn btn-success">Agregar</a>
+          </div>
+        </div>
+*/
+
+$(document).ready(cargarTienda());
+
+function cargarTienda(){
+  let tienda = $("#tiendaLlenar");
+  let storage = JSON.parse(localStorage.getItem("stock"));
+
+  $.each(storage, function(index, item){
+    //COLUMNA
+    let columna = $("<div>");
+    tienda.append(columna);
+    columna.addClass("col-md-4");
+    //CARD
+    let card = $("<div>");
+    columna.append(card);
+    card.addClass("card my-2");
+    card.attr("style","width: 18rem;");
+    //IMAGEN DEL CARD
+    let img = $("<img>");
+    card.append(img);
+    img.addClass("card-img-top");
+    img.attr("src",item.url);
+    //CUERPO DEL CARD
+    let cardBody = $("<div>");
+    card.append(cardBody);
+    cardBody.addClass("card-body");
+    //TITULO DEL CARD
+    let title = $("<h5>");
+    cardBody.append(title);
+    title.addClass("card-title");
+    title.text(item.nombre);
+    //TEXTO DEL CARD
+    let text = $("<p>");
+    cardBody.append(text);
+    text.addClass("card-text");
+    text.text(item.descripcion + " " + convertirCLP(item.precio));
+    let btnAgregar = $("<button>");
+    cardBody.append(btnAgregar);
+    btnAgregar.addClass("btn btn-success");
+    btnAgregar.text("Agregar");
+  });
 }

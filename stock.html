@@ -91,7 +91,7 @@
       <form id="formAgregarProductos" class="row d-flex justify-content-center needs-validation" novalidate>
         <div class="col-md-4 col-sm-2">
           <label for="prodNombre">Nombre:</label>
-          <input type="text" class="form-control" id="prodNombre" placeholder="Ingrese nombre del producto..." required>
+          <input type="text" class="form-control" id="prodNombre" placeholder="Ingrese nombre del producto..." maxlength="44" required>
           <div class="invalid-feedback">
             Porfavor ingrese nombre de producto.
           </div>
@@ -112,7 +112,7 @@
         </div>
         <div class="col-md-12">
           <label for="prodDescripcion">Descripcion: </label>
-          <input type="text" class="form-control" id="prodDescripcion" placeholder="Ingrese la descripcion del producto..." required>
+          <input type="text" class="form-control" id="prodDescripcion" placeholder="Ingrese la descripcion del producto..." maxlength="115" required>
           <div class="invalid-feedback">
             Porfavor ingrese descripcion de producto.
           </div>
@@ -133,7 +133,7 @@
     <div class="row d-flex justify-content-center mt-3">
       <div class="col-6">
         <div class="input-group mb-3">
-          <input id="keyStorage" type="text" class="form-control" placeholder="Buscar..."  aria-describedby="btnEliminarStorage">
+          <input id="txtBuscar" type="text" class="form-control" placeholder="Buscar..."  aria-describedby="btnEliminarStorage">
           <button class="btn btn-primary" type="button" id="btnBuscar"><i class="bi bi-search"></i></button>
         </div>
       </div>
@@ -172,7 +172,7 @@
               <form id="formEditarProducto" class="row d-flex justify-content-center needs-validation" novalidate>
                 <div class="col-md-4 col-sm-2">
                   <label for="edProdNombre">Nombre:</label>
-                  <input type="text" class="form-control" id="edProdNombre" placeholder="Ingrese nombre del producto..." required>
+                  <input type="text" class="form-control" id="edProdNombre" placeholder="Ingrese nombre del producto..." maxlength="44" required>
                   <div class="invalid-feedback">
                     Porfavor ingrese nombre de producto.
                   </div>
@@ -193,7 +193,7 @@
                 </div>
                 <div class="col-md-12">
                   <label for="edProdDescripcion">Descripcion: </label>
-                  <input type="text" class="form-control" id="edProdDescripcion" placeholder="Ingrese la descripcion del producto..." required>
+                  <input type="text" class="form-control" id="edProdDescripcion" placeholder="Ingrese la descripcion del producto..." maxlength="115" required>
                   <div class="invalid-feedback">
                     Porfavor ingrese descripcion de producto.
                   </div>
@@ -224,30 +224,4 @@
     <script src="js/validaciones.js"></script>
     <script src="js/funciones.js"></script>
 </body>
-
-<footer class="text-center text-lg-start bg-light text-muted border-0 mt-auto" id="footerfinal">
-  <section>
-    <div class="container">
-      <div class="row d-flex justify-content-end mt-auto">
-        <!-- Columna Info Empresa -->
-        <div class="col col-2 border-0" id="sobreNosotros">
-          <h6 class="text-uppercase fw-bold">
-            <i class="bi bi-building"></i>
-            PetShop
-          </h6>
-          <p>
-            Aqui encontraras los mejores accesorios para tu mascota. No dudes en contactarnos si necesitas ayuda.
-          </p>
-        </div>
-        <!-- Fin Columna Info Empresa -->
-        <div class="col col-2 border-0" id="contactos">
-          <h6 class="text-uppercase fw-bold">Contacto</h6>
-          <p><i class="bi bi-house-fill"></i> Av. Vicuña Mackenna 4917, San Joaquín</p>
-          <p><i class="bi bi-telephone-fill"></i> +56 9 1234 5678</p>
-          <p><i class="bi bi-envelope-fill"></i> pets4ever@petshop.cl</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</footer>
 </html>

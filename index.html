@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" data-bs-theme="dark">
   <!-- INICIO DEL NAVBAR -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -122,63 +122,31 @@
   <!-- Inicio tienda -->
   <div class="container" id="tienda">
     <div class="row">
-      <div class="col d-flex justify-content-center">
-        <p class="fs-3">Productos</p>
+        <div class="col d-flex justify-content-center">
+          <p class="fs-3">Productos</p>
+        </div>
+      <div class="row d-flex" id="tiendaLlenar">
+      
       </div>
-      <div class="row d-flex justify-content-around">
-        <!-- Primer Item -->
-        <div class="card" style="width: 18rem;">
-          <!-- Imagen del producto -->
-          <img src="img/platos.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <!-- Titulo del Producto -->
-            <h5 class="card-title">Set 3 Platos</h5>
-            <!-- Descripcion del Producto -->
-            <p class="card-text">Set de 3 platos multiusos, perfecto para tener organizada la comida de tu mascota.
-              $15.000</p>
-            <!-- Boton para agregar al carrito -->
-            <a href="#" class="btn btn-success">Agregar</a>
-          </div>
-        </div>
-        <!-- Segundo Item -->
-        <div class="card" style="width: 18rem;">
-          <img src="img/correa.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Correa Super Resistente</h5>
-            <p class="card-text">Correa con una resistencia increible, perfecta para animales pequeños y grandes. $4.000
-            </p>
-            <a href="#" class="btn btn-success">Agregar</a>
-          </div>
-        </div>
-        <!-- Tercer Item -->
-        <div class="card" style="width: 18rem;">
-          <img src="img/dogchow.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Dog Chow 18kg</h5>
-            <p class="card-text">18kg de comida de calidad, aprobado por el Servicio Agricola Ganadero. $43.000</p>
-            <a href="#" class="btn btn-success">Agregar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-
     </div>
   </div>
   <!-- Final tienda -->
 
+  <!-- JS JQUERY -->
+  <script src="js/jquery-3.6.4.min.js"></script>
   <!-- JS BOOTSTRAP NO TOCAR -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
     crossorigin="anonymous"></script>
   <!-- JS -->
   <script src="js/reloj.js"></script>
+  <script src="js/funciones.js"></script>
 </body>
 
-<footer class="text-center text-lg-start bg-light text-muted mt-5 border-0">
+<footer class="text-center text-lg-start text-muted mt-5 border-0">
   <section>
     <div class="container ">
-      <div class="row d-flex justify-content-between">
+      <div class="row d-flex">
         <!-- Columna Info Empresa -->
         <div class="col col-4 border" id="sobreNosotros">
           <h6 class="text-uppercase fw-bold">
