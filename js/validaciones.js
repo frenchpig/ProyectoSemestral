@@ -32,62 +32,129 @@ $(document).ready(function(){
 $(function () {
   $("#formAgregarProductos").on("submit", function (event) {
     event.preventDefault();
-    //Valida el Nombre del Producto
-    let nombre = $("#prodNombre");
-    if (nombre.val().length == 0) {
-      nombre.removeClass("is-valid");
-      nombre.addClass("is-invalid");
-    }else{
-      nombre.removeClass("is-invalid");
-      nombre.addClass("is-valid");
-    }
-
-    //Valida el Precio del Producto
-    let precio = $("#prodPrecio");
-    if (precio.val() == 0 || precio.val().length == 0) {
-      precio.removeClass("is-valid");
-      precio.addClass("is-invalid");
-    }else{
-      precio.removeClass("is-invalid");
-      precio.addClass("is-valid");
-    }
-    
-    //Valida la cantidad en Stock del Producto
-    let stock = $("#prodCantidad");
-    if (stock.val() == 0 || stock.val().length == 0) {
-      stock.removeClass("is-valid");
-      stock.addClass("is-invalid");
-    }else{
-      stock.removeClass("is-invalid");
-      stock.addClass("is-valid");
-    }
-
-    //Valida la Descripcion del Producto
-    let descripcion = $("#prodDescripcion");
-    if (descripcion.val().length == 0) {
-      descripcion.removeClass("is-valid");
-      descripcion.addClass("is-invalid");
-    }else{
-      descripcion.removeClass("is-invalid");
-      descripcion.addClass("is-valid");
-    }
-
-    //Valida el URL de la imagen del Producto
-    let url = $("#prodUrlImagen");
-    if (url.val().length == 0) {
-      url.removeClass("is-valid");
-      url.addClass("is-invalid");
-    }else{
-      url.removeClass("is-invalid");
-      url.addClass("is-valid");
-    }
-    
-    if(nombre.hasClass("is-valid") && precio.hasClass("is-valid") && stock.hasClass("is-valid") && descripcion.hasClass("is-valid") && url.hasClass("is-valid")){
-      guardarProducto(nombre,precio,stock,descripcion,url);
-    }
-
+    comprobarAgregarDatos();
   });
+
+  $("#formEditarProducto").on("submit", function (event) {
+    event.preventDefault();
+    comprobarEditarDatos();
+  });
+
 })
+
+function comprobarAgregarDatos(){
+
+  //Valida el Nombre del Producto
+  let nombre = $("#prodNombre");
+  if (nombre.val().length == 0) {
+    nombre.removeClass("is-valid");
+    nombre.addClass("is-invalid");
+  }else{
+    nombre.removeClass("is-invalid");
+    nombre.addClass("is-valid");
+  }
+
+  //Valida el Precio del Producto
+  let precio = $("#prodPrecio");
+  if (precio.val() == 0 || precio.val().length == 0) {
+    precio.removeClass("is-valid");
+    precio.addClass("is-invalid");
+  }else{
+    precio.removeClass("is-invalid");
+    precio.addClass("is-valid");
+  }
+  
+  //Valida la cantidad en Stock del Producto
+  let stock = $("#prodCantidad");
+  if (stock.val() == 0 || stock.val().length == 0) {
+    stock.removeClass("is-valid");
+    stock.addClass("is-invalid");
+  }else{
+    stock.removeClass("is-invalid");
+    stock.addClass("is-valid");
+  }
+
+  //Valida la Descripcion del Producto
+  let descripcion = $("#prodDescripcion");
+  if (descripcion.val().length == 0) {
+    descripcion.removeClass("is-valid");
+    descripcion.addClass("is-invalid");
+  }else{
+    descripcion.removeClass("is-invalid");
+    descripcion.addClass("is-valid");
+  }
+
+  //Valida el URL de la imagen del Producto
+  let url = $("#prodUrlImagen");
+  if (url.val().length == 0) {
+    url.removeClass("is-valid");
+    url.addClass("is-invalid");
+  }else{
+    url.removeClass("is-invalid");
+    url.addClass("is-valid");
+  }
+  
+  if(nombre.hasClass("is-valid") && precio.hasClass("is-valid") && stock.hasClass("is-valid") && descripcion.hasClass("is-valid") && url.hasClass("is-valid")){
+    guardarProducto(nombre,precio,stock,descripcion,url);
+  }
+
+}
+
+function comprobarEditarDatos(){
+  //Valida el Nombre del Producto
+  let nombre = $("#edProdNombre");
+  if (nombre.val().length == 0) {
+    nombre.removeClass("is-valid");
+    nombre.addClass("is-invalid");
+  }else{
+    nombre.removeClass("is-invalid");
+    nombre.addClass("is-valid");
+  }
+
+  //Valida el Precio del Producto
+  let precio = $("#edProdPrecio");
+  if (precio.val() == 0 || precio.val().length == 0) {
+    precio.removeClass("is-valid");
+    precio.addClass("is-invalid");
+  }else{
+    precio.removeClass("is-invalid");
+    precio.addClass("is-valid");
+  }
+  
+  //Valida la cantidad en Stock del Producto
+  let stock = $("#edProdCantidad");
+  if (stock.val() == 0 || stock.val().length == 0) {
+    stock.removeClass("is-valid");
+    stock.addClass("is-invalid");
+  }else{
+    stock.removeClass("is-invalid");
+    stock.addClass("is-valid");
+  }
+
+  //Valida la Descripcion del Producto
+  let descripcion = $("#edProdDescripcion");
+  if (descripcion.val().length == 0) {
+    descripcion.removeClass("is-valid");
+    descripcion.addClass("is-invalid");
+  }else{
+    descripcion.removeClass("is-invalid");
+    descripcion.addClass("is-valid");
+  }
+
+  //Valida el URL de la imagen del Producto
+  let url = $("#edProdUrlImagen");
+  if (url.val().length == 0) {
+    url.removeClass("is-valid");
+    url.addClass("is-invalid");
+  }else{
+    url.removeClass("is-invalid");
+    url.addClass("is-valid");
+  }
+  
+  if(nombre.hasClass("is-valid") && precio.hasClass("is-valid") && stock.hasClass("is-valid") && descripcion.hasClass("is-valid") && url.hasClass("is-valid")){
+    guardarEdicion(nombre,precio,stock,descripcion,url);
+  }
+}
 
 function guardarProducto(nombre,precio,stock,descripcion,url){
   comprobarStorage("stock");

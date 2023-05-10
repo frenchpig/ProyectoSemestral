@@ -159,6 +159,63 @@
     </div>
     <!-- Fin Productos disponibles + buscador -->
 
+
+    <!-- Modal Editar -->
+    <div class="modal modal-lg fade" id="modalEditar" tabindex="-1" aria-labelledby="lblmodalEditar" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="lblmodalEditar">Editar Producto</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="formEditarProducto" class="row d-flex justify-content-center needs-validation" novalidate>
+                <div class="col-md-4 col-sm-2">
+                  <label for="edProdNombre">Nombre:</label>
+                  <input type="text" class="form-control" id="edProdNombre" placeholder="Ingrese nombre del producto..." required>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese nombre de producto.
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="edProdPrecio">Precio:</label>
+                  <input type="number" class="form-control" id="edProdPrecio" required>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese precio de producto.
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="edProdCantidad">Cantidad en Stock:</label>
+                  <input type="number" class="form-control" id="edProdCantidad" required>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese cantidad en stock de producto.
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="edProdDescripcion">Descripcion: </label>
+                  <input type="text" class="form-control" id="edProdDescripcion" placeholder="Ingrese la descripcion del producto..." required>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese descripcion de producto.
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="edProdUrlImagen">URL de Imagen: </label>
+                  <input type="text" class="form-control" id="edProdUrlImagen" placeholder="Ingrese la URL de la imagen del producto..." required>
+                  <div class="invalid-feedback">
+                    Porfavor ingrese imagen de producto.
+                  </div>
+                </div>
+              </form>
+            <div class="modal-footer">
+              <button id="btnCerrarModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button id="btnEditarProducto" type="submit" form="formEditarProducto" class="btn btn-verde">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal Editar -->
+
     <!-- JS JQUERY NO TOCAR -->
     <script src="js/jquery-3.6.4.min.js"></script>
     <!-- JS BOOTSTRAP NO TOCAR -->
