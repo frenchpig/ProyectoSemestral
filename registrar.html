@@ -8,23 +8,60 @@
   </head>
   <body>
     <!-- INICIO DEL NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <!-- TITULO DEL NAVBAR -->
-        <a class="navbar-brand" href="index.html">Petshop</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <!-- TITULO DEL NAVBAR -->
+      <a class="navbar-brand" href="index.html">Petshop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Más</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html#tienda"> Tienda</a></li>
+              <li><a class="dropdown-item" href="#contactos"> Donde estamos?</a></li>
+              <li><a class="dropdown-item" href="#"> Proveedores </a></li>
+            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Ingresa o Registrate</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="ingresar.html"> Ingresar</a></li>
+              <li><a class="dropdown-item" href="registrar.html"> Registrate!</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Administrador </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="stock.html">Stock</a></li>
+            </ul>
+          </li>
+          <!-- Carrito de compra -->
+          <li class="nav-item">
+            <a class="nav-link" href="compra.html"><i class="bi bi-cart"></i></a>
+          </li>
+        </ul>
+        
+        <button id="btnModo" class="btn d-flex me-2 btn-DarkMode">
+          <i id="modoOscuro" class="bi bi-moon-stars"></i>
+          <i id="modoClaro" class="bi bi-brightness-alt-high-fill d-none"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-            </li>
-        </div>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
       </div>
-    </nav>
-    <!-- FIN DEL NAVBAR -->
+    </div>
+  </nav>
+  <!-- FIN DEL NAVBAR -->
       
     <div class="container">
       <div class="row d-flex justify-content-center mt-5">

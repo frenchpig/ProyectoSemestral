@@ -131,26 +131,7 @@ $("#btnBuscar").on("click", function () {
   })
 });
 
-
-/*
-  <!-- Primer Item -->
-        <div class="card" style="width: 18rem;">
-          <!-- Imagen del producto -->
-          <img src="img/platos.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <!-- Titulo del Producto -->
-            <h5 class="card-title">Set 3 Platos</h5>
-            <!-- Descripcion del Producto -->
-            <p class="card-text">Set de 3 platos multiusos, perfecto para tener organizada la comida de tu mascota.
-              $15.000</p>
-            <!-- Boton para agregar al carrito -->
-            <a href="#" class="btn btn-success">Agregar</a>
-          </div>
-        </div>
-*/
-
 $(document).ready(cargarTienda());
-
 function cargarTienda(){
   let tienda = $("#tiendaLlenar");
   let storage = JSON.parse(localStorage.getItem("stock"));
@@ -184,9 +165,25 @@ function cargarTienda(){
     cardBody.append(text);
     text.addClass("card-text");
     text.text(item.descripcion + " " + convertirCLP(item.precio));
+    //BOTON AGREGAR
     let btnAgregar = $("<button>");
     cardBody.append(btnAgregar);
     btnAgregar.addClass("btn btn-success");
     btnAgregar.text("Agregar");
   });
 }
+
+//MODO OSCURO
+$("#btnModo").on("click",function(){
+  let modoClaro = $("#modoClaro");
+  let modoOscuro = $("#modoOscuro");
+  if (modoClaro.hasClass("d-none")) {
+    modoClaro.removeClass("d-none");
+    modoOscuro.addClass("d-none");
+    $("body").attr("data-bs-theme", "dark");
+  } else {
+    modoClaro.addClass("d-none");
+    modoOscuro.removeClass("d-none");
+    $("body").attr("data-bs-theme", "ligth");
+  }
+});
