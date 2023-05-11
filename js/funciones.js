@@ -62,14 +62,11 @@ function cargarTabla(){
 //Funcion para eliminar un producto
 function eliminarProducto(id){
   let tempArray = [];
-  let contador = 1;
   let storage = JSON.parse(localStorage.getItem("stock"));
   for (const item of storage) {
     if (item.id != id) {
       console.log(item);
-      item.id = contador;
       tempArray.push(item);
-      contador = contador + 1;
     }
   }
   localStorage.setItem("stock",JSON.stringify(tempArray));
@@ -77,9 +74,17 @@ function eliminarProducto(id){
 }
 
 //Funcion para editar un producto Parte 1
+let productoG;
 function conseguirProducto(id){
   let storage = JSON.parse(localStorage.getItem("stock"));
-  let producto = storage[id-1];
+  let indice;
+  for (const obj of storage) {
+    if (obj.id==id) {
+      indice = storage.indexOf(obj);
+    }
+  }
+  let producto = storage[indice];
+  let productoG = producto;
   $("#edProdNombre").val(producto.nombre);
   $("#edProdPrecio").val(producto.precio);
   $("#edProdCantidad").val(producto.stock);

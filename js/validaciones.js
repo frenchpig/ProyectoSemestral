@@ -184,7 +184,7 @@ function calcularIDProducto(key){
   if (storage.length == 0) {
     return 1
   } else {
-    let id = storage.length + 1
+    let id = storage[storage.length-1].id + 1
     return id
   }
 }
