@@ -259,7 +259,6 @@ function cargarCarrito(){
   $.each(carrito, function(index, item){
     total = total + parseInt(item.total);
   })
-  console.log(total);
   row.append($("<th>").text("Total").attr("scope","row"));
   row.append($("<td>").text(""));
   row.append($("<td>").text(""));
@@ -306,5 +305,5 @@ function agregarCarrito(id){
     carrito[indice].total = total;
   }
   localStorage.setItem("carrito",JSON.stringify(carrito));
-  //cargarCarrito();
+  cargarCarrito();
 }
