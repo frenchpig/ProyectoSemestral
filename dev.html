@@ -1,103 +1,109 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DEV MENU</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  </head>
-  <body>
-    <h1>MENU DE DESARROLLADOR</h1>
 
-    <h3>LocalStorage</h3>
-    <div class="row">
-      <div class="col-4">
-        <div class="input-group mb-3">
-          <input id="keyStorage" type="text" class="form-control"  aria-describedby="btnEliminarStorage">
-          <button class="btn btn-danger" type="button" id="btnEliminarStorage">Eliminar</button>
-        </div>
-      </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DEV MENU</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
 
-      <div class="col-4">
-        <div class="input-group mb-3">
-          <input id="keyStorage2" type="text" class="form-control"  aria-describedby="btnMostrarStorage">
-          <button class="btn btn-secondary" type="button" id="btnMostrarStorage">Mostrar</button>
-        </div>
-      </div>
+<body>
+  <h1>MENU DE DESARROLLADOR</h1>
 
-      <div class="col-4">
-        <div class="input-group mb-3">
-          <input id="keyStorage3" type="text" class="form-control"  aria-describedby="btnCrearStorage">
-          <button class="btn btn-success" type="button" id="btnCrearStorage">Crear</button>
-        </div>
+  <h3>LocalStorage</h3>
+  <div class="row">
+    <div class="col-4">
+      <div class="input-group mb-3">
+        <input id="keyStorage" type="text" class="form-control" aria-describedby="btnEliminarStorage">
+        <button class="btn btn-danger" type="button" id="btnEliminarStorage">Eliminar</button>
       </div>
     </div>
 
-
-    <!-- MAQUETADOS -->
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Producto</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Stock</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Comida Perro</td>
-          <td>20000</td>
-          <td>200</td>
-          <td>
-            <button href="#" class="btn btn-primary btnEditar">
-              <i class="bi bi-pencil-square"></i> 
-            </button>
-            <button id="btnEliminar" href="#" class="btn btn-danger btnEliminar">
-              <i class="bi bi-trash3-fill"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <table id="tabla" class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Producto</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Stock</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody id="cuerpoTabla">
-
-      </tbody>
-    </table>
-
-    <div class="container">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button">Botón izquierdo</button>
-        </div>
-        <input type="text" class="form-control" placeholder="Ingrese su texto aquí">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Botón derecho</button>
-        </div>
+    <div class="col-4">
+      <div class="input-group mb-3">
+        <input id="keyStorage2" type="text" class="form-control" aria-describedby="btnMostrarStorage">
+        <button class="btn btn-secondary" type="button" id="btnMostrarStorage">Mostrar</button>
       </div>
     </div>
 
-    <!-- JQUERY -->
-    <script src="js/jquery-3.6.4.min.js"></script>
-    <!-- JS BOOTSTRAP -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <!-- JS FUNCIONES -->
-    <script src="js/validaciones.js"></script>
-    <script src="js/funciones.js"></script>
-  </body>
+    <div class="col-4">
+      <div class="input-group mb-3">
+        <input id="keyStorage3" type="text" class="form-control" aria-describedby="btnCrearStorage">
+        <button class="btn btn-success" type="button" id="btnCrearStorage">Crear</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MAQUETADOS -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Comida Perro</td>
+        <td>20000</td>
+        <td>200</td>
+        <td>
+          <button href="#" class="btn btn-primary btnEditar">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button id="btnEliminar" href="#" class="btn btn-danger btnEliminar">
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="tabla" class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody id="cuerpoTabla">
+
+    </tbody>
+  </table>
+
+  <div class="container">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" type="button">Botón izquierdo</button>
+      </div>
+      <input type="text" class="form-control" placeholder="Ingrese su texto aquí">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Botón derecho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JQUERY -->
+  <script src="js/jquery-3.6.4.min.js"></script>
+  <!-- JS BOOTSTRAP -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <!-- JS FUNCIONES -->
+  <script src="js/validaciones.js"></script>
+  <script src="js/funciones.js"></script>
+</body>
+
 </html>
