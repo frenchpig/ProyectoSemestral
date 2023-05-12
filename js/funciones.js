@@ -65,7 +65,6 @@ function eliminarProducto(id){
   let storage = JSON.parse(localStorage.getItem("stock"));
   for (const item of storage) {
     if (item.id != id) {
-      console.log(item);
       tempArray.push(item);
     }
   }
@@ -73,18 +72,18 @@ function eliminarProducto(id){
   cargarTabla();
 }
 
+//Funcion para conseguir el objeto mediante la ID
+function conseguirProductoPorId(id){
+  return function(obj){
+    return obj.id == id;
+  }
+}
+
 //Funcion para editar un producto Parte 1
-let productoG;
 function conseguirProducto(id){
   let storage = JSON.parse(localStorage.getItem("stock"));
-  let indice;
-  for (const obj of storage) {
-    if (obj.id==id) {
-      indice = storage.indexOf(obj);
-    }
-  }
+  let indice = storage.findIndex(conseguirProductoPorId(id));
   let producto = storage[indice];
-  let productoG = producto;
   $("#edProdNombre").val(producto.nombre);
   $("#edProdPrecio").val(producto.precio);
   $("#edProdCantidad").val(producto.stock);
@@ -99,7 +98,8 @@ function guardarEdicion(nombre,precio,stock,descripcion,url){
   let titulo = $("#lblmodalEditar").text();
   let id = titulo.slice(17, titulo.length);
   let storage = JSON.parse(localStorage.getItem("stock"));
-  storage[id-1]={
+  let indice = storage.findIndex(conseguirProductoPorId(id));
+  storage[indice]={
     id: id,
     nombre: nombre.val(),
     precio: precio.val(),
@@ -151,6 +151,10 @@ function cargarTienda(){
     columna.append(card);
     card.addClass("card my-2");
     card.attr("style","width: 18rem;");
+    //Test
+    let sku = $("<p>");
+    card.append(sku);
+    sku.text("SKU: "+ item.id);
     //IMAGEN DEL CARD
     let img = $("<img>");
     card.append(img);
@@ -175,6 +179,12 @@ function cargarTienda(){
     cardBody.append(btnAgregar);
     btnAgregar.addClass("btn btn-success");
     btnAgregar.text("Agregar");
+    let idAgregar = item.id + "Ag"
+    btnAgregar.attr("id",idAgregar)
+    btnAgregar.click(function(){
+      id = $(this).attr("id").slice(0,$(this).attr("id").length-2);
+      agregarCarrito(id);
+    });
   });
 }
 
@@ -192,3 +202,109 @@ $("#btnModo").on("click",function(){
     $("body").attr("data-bs-theme", "ligth");
   }
 });
+
+/*<tr>
+            <th scope="row">1</th>
+            <td>Comida de Perro (Pollo)</td>
+            <td><input class="col-4" type="number"></td>
+            <td><button class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button></td>
+            <td>$43.000</td>
+          </tr> */
+
+function cargarCarrito(){
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+  let tabla = $("#cuerpoCarrito");
+  tabla.empty();
+  $.each(carrito, function(index, item){
+    //Crea la Fila
+    let row = $('<tr>');
+    //Consigue la poscicion en la que deberia estar el item
+    let poscicion = index + 1;
+    //Agrega la poscicon a la fila
+    row.append($("<th>").text(poscicion).attr("scope","row"));
+    //Agrega el nombre a la fila
+    row.append($("<td>").text(item.nombre));
+    //Agrega la cantidad a la fila
+    let cantidad = $("<td>");
+    row.append(cantidad);
+    let input = $("<input>");
+    cantidad.append(input);
+    input.addClass("form-control");
+    input.attr("type","number");
+    input.val(item.cantidad);
+    //Agrega el boton de Eliminar a la fila
+    let colEliminar = $("<td>");
+    row.append(colEliminar);
+    let btnEliminar = $("<button>");
+    colEliminar.append(btnEliminar);
+    let idEliminar = index + "El";
+    btnEliminar.attr("id", idEliminar);
+    btnEliminar.click(function(){
+      id = $(this).attr("id").slice(0,$(this).attr("id").length-2);
+      eliminarDeCarrito(id);
+    });
+    btnEliminar.addClass("btn btn-danger");
+    let iconoEliminar = $("<i>");
+    btnEliminar.append(iconoEliminar)
+    iconoEliminar.addClass("bi bi-trash3-fill");
+    //Agrega el total a la fila
+    row.append($("<td>").text(convertirCLP(item.total)));
+    
+    //Agrega la fila a la tabla
+    tabla.append(row);
+  })
+
+  let row = $('<tr>');
+  let total = 0;
+  $.each(carrito, function(index, item){
+    total = total + parseInt(item.total);
+  })
+  console.log(total);
+  row.append($("<th>").text("Total").attr("scope","row"));
+  row.append($("<td>").text(""));
+  row.append($("<td>").text(""));
+  row.append($("<td>").text(""));
+  row.append($("<td>").text(convertirCLP(total)));
+
+  tabla.append(row);
+
+
+}
+
+function eliminarDeCarrito(id){
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+  carrito.splice(id,1);
+  localStorage.setItem("carrito",JSON.stringify(carrito));
+  cargarCarrito();
+}
+
+//Agregar Al Carrito
+function agregarCarrito(id){
+  comprobarStorage("carrito");
+  let stock = JSON.parse(localStorage.getItem("stock"));
+  let indice = stock.findIndex(conseguirProductoPorId(id));
+  let producto = stock[indice];
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+
+  let filtro = carrito.filter(e => e.nombre == producto.nombre);
+  if (filtro.length == 0) {
+    carrito.push({
+      nombre: producto.nombre,
+      precio: producto.precio,
+      id: producto.id,
+      cantidad: 1,
+      total: producto.precio
+    })
+  } else {
+    indice = carrito.findIndex(conseguirProductoPorId(id));
+    let precio = carrito[indice].precio;
+    let cantidad = carrito[indice].cantidad;
+    let total = carrito[indice].total;
+    cantidad = cantidad + 1;
+    total = cantidad * precio;
+    carrito[indice].cantidad = cantidad;
+    carrito[indice].total = total;
+  }
+  localStorage.setItem("carrito",JSON.stringify(carrito));
+  //cargarCarrito();
+}
