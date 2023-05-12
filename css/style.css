@@ -26,12 +26,8 @@
 
 
 .reloj{
-	background-color: #FDFD96;
+	background-color: #77DD77;
 	color: #0d1420;
-  border: 5px solid #091321;
+  border: 5px solid #447e45;
   border-radius: 10px;
-}
-
-.fondo-personalizado {
-  background-color: #00CAD0; /* código de color hexadecimal para blanco */
 }
