@@ -307,3 +307,28 @@ function agregarCarrito(id){
   localStorage.setItem("carrito",JSON.stringify(carrito));
   cargarCarrito();
 }
+
+$("index").ready(function () {
+  cargarCarrito();
+  conseguirUbicacion();
+});
+
+function conseguirUbicacion(){
+  navigator.geolocation.getCurrentPosition(function(position){
+    let latitud = position.coords.latitude;
+    let longitud = position.coords.longitude;
+    climatologia(latitud,longitud);
+  });
+}
+
+function climatologia(latitud, longitud){
+  fetch("https://api.openweathermap.org/data/2.5/weather?lat="+latitud+"&lon="+longitud+"&appid=f585e03e11ba7f51927394fe524a29f1")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      let kelvin = 273.15;
+      let temperaturaActual = Math.trunc(data.main.temp - kelvin); 
+      let texto = $("#temperaturaActual");
+      texto.text(temperaturaActual + "°C");
+    })
+}

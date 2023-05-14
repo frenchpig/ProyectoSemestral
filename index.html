@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100" data-bs-theme="btn-DarkMode" onload="cargarCarrito()"
+<body id="index" class="d-flex flex-column min-vh-100" data-bs-theme="btn-DarkMode" 
   class="fondo-personalizado">
 
   <!-- INICIO DEL NAVBAR -->
@@ -98,17 +98,30 @@
     <!-- FIN CAROUSEL -->
 
     <!-- RELOJ -->
-    <div class="container">
+    <div class="container mt-2">
       <div class="row d-flex justify-content-center">
         <div class="col-4">
           <div id="relojnumerico" class="d-flex justify-content-center fs-1 text-wrap reloj" onload="cargarReloj()">
           </div>
         </div>
       </div>
-
     </div>
-
     <!-- FIN RELOJ -->
+
+    <!-- Temperatura -->
+    <div class="container mt-2">
+      <div class="row d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
+          <h1>Temperatura Actual</h1>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col d-flex justify-content-center">
+          <p id="temperaturaActual" class="fs-4"></p>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Temperatura -->
 
     <!-- Inicio tienda -->
     <div class="container" id="tienda">
