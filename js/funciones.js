@@ -203,6 +203,15 @@ $("#btnModo").on("click",function(){
   }
 });
 
+function cambiarColor(){
+  let boton = document.getElementById("btnModo");
+  if (boton.classList.contains("btn-negro")) {
+    boton.classList.replace("btn-negro","btn-blanco");
+  }else{
+    boton.classList.replace("btn-blanco","btn-negro");
+  }
+}
+
 /*<tr>
             <th scope="row">1</th>
             <td>Comida de Perro (Pollo)</td>
@@ -311,6 +320,7 @@ function agregarCarrito(id){
 $("index").ready(function () {
   cargarCarrito();
   conseguirUbicacion();
+  crearDemo();
 });
 
 function conseguirUbicacion(){
@@ -335,4 +345,33 @@ function climatologia(latitud, longitud){
       imagen.attr("src", url);
       texto.text(temperaturaActual + "°C ");
     })
+}
+
+function crearDemo(){
+  let stock = JSON.parse(localStorage.getItem("stock"));
+  if (stock.length == 0) {
+    stock.push({
+      id: 1,
+      nombre: "Comida Perruna",
+      precio: 43000,
+      stock: 20,
+      descripcion: "Comida para perros de alta calidad con ingredientes naturales y nutritivos para una dieta equilibrada y sabor irresistible. ¡Tu perro lo amará!",
+      url: "https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw6832e6f1/images/Dog%20Adult%20Mini%20-%20sabor%20pollo%20y%20arroz%20cafe.jpg"
+    },{
+      id: 2,
+      nombre: "Comida Gatuna",
+      precio: 23000,
+      stock: 20,
+      descripcion: "Comida para gatos de calidad premium con proteínas de origen animal y nutrientes esenciales para una salud óptima y un sabor irresistible. ¡A tu gato le encantará!",
+      url: "https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw8a8b6892/images/Cat%20Adult%20Sterilized%20-%20sabor%20pollo%20y%20arroz.jpg"
+    },{
+      id: 3,
+      nombre: "Comida de Pajarito",
+      precio: 30000,
+      stock: 20,
+      descripcion: "Deliciosa comida para pájaros con una mezcla única de semillas y frutas para satisfacer sus necesidades nutricionales y hacer que canten de alegría. ¡Un festín para tu ave!",
+      url: "https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw388b10dd/images/68622-ac-56a61.jpg"
+    });
+    localStorage.setItem("stock",JSON.stringify(stock));
+  }
 }
