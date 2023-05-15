@@ -44,8 +44,8 @@ function cargarTabla(){
       id = $(this).attr("id").slice(0,$(this).attr("id").length-2);
       conseguirProducto(id);
     });
-    botonEliminar.addClass("btn btn-danger btnEliminar ms-1");
-    botonEditar.addClass("btn btn-primary btnEditar");
+    botonEliminar.addClass("btn btn-rojo btnEliminar ms-1");
+    botonEditar.addClass("btn btn-azul btnEditar");
     let iconoLapiz = $("<i>");
     let iconoBasura = $("<i>");
     botonEliminar.append(iconoBasura);
@@ -177,7 +177,7 @@ function cargarTienda(){
     //BOTON AGREGAR
     let btnAgregar = $("<button>");
     cardBody.append(btnAgregar);
-    btnAgregar.addClass("btn btn-success");
+    btnAgregar.addClass("btn btn-verde");
     btnAgregar.text("Agregar");
     let idAgregar = item.id + "Ag"
     btnAgregar.attr("id",idAgregar)
@@ -243,7 +243,7 @@ function cargarCarrito(){
       id = $(this).attr("id").slice(0,$(this).attr("id").length-2);
       eliminarDeCarrito(id);
     });
-    btnEliminar.addClass("btn btn-danger");
+    btnEliminar.addClass("btn btn-rojo");
     let iconoEliminar = $("<i>");
     btnEliminar.append(iconoEliminar)
     iconoEliminar.addClass("bi bi-trash3-fill");
@@ -329,6 +329,10 @@ function climatologia(latitud, longitud){
       let kelvin = 273.15;
       let temperaturaActual = Math.trunc(data.main.temp - kelvin); 
       let texto = $("#temperaturaActual");
-      texto.text(temperaturaActual + "°C");
+      let icono = data.weather[0].icon;
+      let url = "https://openweathermap.org/img/wn/"+ icono +"@2x.png"
+      let imagen = $("#iconoTemperatura");
+      imagen.attr("src", url);
+      texto.text(temperaturaActual + "°C ");
     })
 }

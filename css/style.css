@@ -24,10 +24,49 @@
   --bs-btn-disabled-border-color: #adebad;
 }
 
+.btn-azul {
+  --bs-btn-color: #1D1C1A;
+  --bs-btn-bg: #B7D1D3;
+  --bs-btn-border-color: #B7D1D3;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #A6C3CE;
+  --bs-btn-hover-border-color: #A6C3CE7;
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #8FB8CA;
+  --bs-btn-active-border-color: #8FB8CA;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #1D1C1A;
+  --bs-btn-disabled-bg: #CEDFDF;
+  --bs-btn-disabled-border-color: #CEDFDF;
+}
+
+.btn-rojo {
+  --bs-btn-color: #1D1C1A;
+  --bs-btn-bg: #fd706b;
+  --bs-btn-border-color: #fd706b;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #e54c38;
+  --bs-btn-hover-border-color: #e54c38;
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #c23a22;
+  --bs-btn-active-border-color: #c23a22;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #1D1C1A;
+  --bs-btn-disabled-bg: #f8858b;
+  --bs-btn-disabled-border-color: #f8858b;
+}
+
 
 .reloj{
 	background-color: #77DD77;
 	color: #0d1420;
   border: 5px solid #447e45;
   border-radius: 10px;
+}
+
+#iconoTemperatura{
+  height: 40px;
+  width: 40px;
 }
