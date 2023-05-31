@@ -146,11 +146,15 @@ function cargarTienda(){
     let columna = $("<div>");
     tienda.append(columna);
     columna.addClass("col-md-4");
+
+
     //CARD
     let card = $("<div>");
     columna.append(card);
-    card.addClass("card my-2");
+    card.addClass("card my-2",);
     card.attr("style","width: 18rem;");
+    
+    
     //Test
     let sku = $("<p>");
     card.append(sku);
@@ -173,7 +177,7 @@ function cargarTienda(){
     let text = $("<p>");
     cardBody.append(text);
     text.addClass("card-text");
-    text.text(item.descripcion + " " + convertirCLP(item.precio));
+    text.html(`<span>${item.descripcion}</span><br><span>${convertirCLP(item.precio)}</span>`);
     //BOTON AGREGAR
     let btnAgregar = $("<button>");
     cardBody.append(btnAgregar);
