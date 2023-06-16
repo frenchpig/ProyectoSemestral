@@ -1,0 +1,119 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Petshop</title>
+  <!-- CSS BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <!-- CSS BOOTSTRAP ICONOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- CSS PROPIO -->
+  {% block header %}
+  {% endblock %}
+</head>
+
+<body id="index" class="d-flex flex-column min-vh-100" data-bs-theme="light">
+
+  <!-- INICIO DEL NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <!-- TITULO DEL NAVBAR -->
+      <a class="navbar-brand" href="/">Petshop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Más</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html#tienda"> Tienda</a></li>
+              <li><a class="dropdown-item" href="#contactos"> Donde estamos?</a></li>
+              <li><a class="dropdown-item" href="#"> Proveedores </a></li>
+            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Ingresa o Registrate</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="ingresar.html"> Ingresar</a></li>
+              <li><a class="dropdown-item" href="registrar.html"> Registrate!</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Administrador </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/stock">Stock</a></li>
+            </ul>
+          </li>
+          <!-- Carrito de compra -->
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito"
+              aria-controls="offcanvasCarrito"><i class="bi bi-cart"></i></a>
+          </li>
+        </ul>
+        <!-- class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" -->
+        <button id="btnModo" class="btn me-2 btn-negro" onclick="cambiarColor()">
+          <i id="modoOscuro" class="bi bi-moon-stars"></i>
+          <i id="modoClaro" class="bi bi-brightness-alt-high-fill d-none"></i>
+        </button>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- FIN DEL NAVBAR -->
+
+  {% block body %}
+  {% endblock %}
+
+    <!-- JS JQUERY -->
+    <script src="{% static 'js/jquery-3.6.4.min.js'%}"></script>
+    <!-- JS BOOTSTRAP NO TOCAR -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"></script>
+      <script src="{% static 'js/funcionesGenerales.js'%}"></script>
+    
+  {% block script %}
+  {% endblock %}
+  <footer class="text-center text-lg-start text-muted mt-5 border-0">
+    <section>
+      <div class="container ">
+        <div class="row d-flex">
+          <!-- Columna Info Empresa -->
+          <div class="col col-4 border" id="sobreNosotros">
+            <h6 class="text-uppercase fw-bold">
+              <i class="bi bi-building"></i>
+              PetShop
+            </h6>
+            <p>
+              Aqui encontraras los mejores accesorios para tu mascota. No dudes en contactarnos si necesitas ayuda.
+            </p>
+          </div>
+          <!-- Fin Columna Info Empresa -->
+          <div class="col col-4 border" id="contactos">
+            <h6 class="text-uppercase fw-bold">Contacto</h6>
+            <p><i class="bi bi-house-fill"></i> Av. Vicuña Mackenna 4917, San Joaquín</p>
+            <p><i class="bi bi-telephone-fill"></i> +56 9 1234 5678</p>
+            <p><i class="bi bi-envelope-fill"></i> pets4ever@petshop.cl</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+
+  {% comment %} {% include '_alert.html' %} {% endcomment %}
+</body>
+</html>

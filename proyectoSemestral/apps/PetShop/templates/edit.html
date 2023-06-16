@@ -1,0 +1,86 @@
+{% extends "./base.html" %}
+{% load static %}
+
+
+{% block header %}
+  <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+  
+{% endblock %}
+
+{% block body %}
+
+  <!-- Control de Stock -->
+  <div class="container mt-2">
+
+    <!-- Titulo de la seccion -->
+    <div class="row text-center">
+      <p class="fs-1">
+        Stock de Productos
+      </p>
+    </div>
+
+    <!-- Editar Productos -->
+    <div class="row">
+      <h3>Editar Producto</h3>
+    </div>
+    <form action="/editarProducto/{{prod.sku}}" id="formEditarProductos" class="row d-flex justify-content-center needs-validation" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
+      <div class="col-md-3 col-sm-2">
+        <label for="prodNombre">Nombre:</label>
+        <input value="{{prod.nombre}}" type="text" class="form-control" id="prodNombre" placeholder="Ingrese nombre del producto..." maxlength="44" required name="prodNombre">
+        <div class="invalid-feedback">
+          Porfavor ingrese nombre de producto.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="prodPrecio">Precio:</label>
+        <input value="{{prod.precio}}" type="number" class="form-control" id="prodPrecio" required name="prodPrecio">
+        <div class="invalid-feedback">
+          Porfavor ingrese precio de producto.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="prodCantidad">Cantidad en Stock:</label>
+        <input value="{{prod.stock}}" type="number" class="form-control" id="prodCantidad" required name="prodCantidad">
+        <div class="invalid-feedback">
+          Porfavor ingrese cantidad en stock de producto.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="prodCategoria">Categoria: </label>
+        <select id="prodCategoria" class="form-select" aria-label="Default select example" name="prodCategoria">
+          <option value="0" selected disabled>Seleccionar...</option>
+          {% for c in cates %}
+            <option value="{{c.categoria_id}}" {% if cateProd == c.categoria_id %} selected {% endif %}>{{c.nombre}}</option>
+          {% endfor %}
+        </select>
+        <div class="invalid-feedback">
+          Porfavor seleccione una categoria.
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="prodDescripcion">Descripcion: </label>
+        <input value="{{prod.descripcion}}" type="text" class="form-control" id="prodDescripcion"
+          placeholder="Ingrese la descripcion del producto..." maxlength="115" required name="prodDescripcion">
+        <div class="invalid-feedback">
+          Porfavor ingrese descripcion de producto.
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="prodImagen">Imagen: </label>
+        <img src="{{prod.image.url}}" alt="" height="100">
+        <input type="file" accept="image/*" class="form-control" id="prodImagen" placeholder="Ingrese la URL de la imagen del producto..." required name="prodImagen">
+        <div class="invalid-feedback">
+          Porfavor ingrese imagen de producto con el formato .jpg, .jpeg o .png
+        </div>
+      </div>
+      <button id="botonEditar" type="submit" class="btn btn-verde mt-3 w-75">Confirmar Edicion</button>
+    </form>
+  </div>
+  <!-- Fin Agregar Productor -->
+  
+  
+{% endblock %}
+
+{% block script %}
+  <script src="{% static 'js/edit.js'%}"></script>
+{% endblock %}
