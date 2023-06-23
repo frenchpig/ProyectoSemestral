@@ -6,7 +6,8 @@ from django.conf import settings
 # Create your views here.
 
 def cargarInicio(request):
-  return render(request, "inicio.html")
+  productos = Producto.objects.all()
+  return render(request, "inicio.html",{"prod":productos})
 
 def cargarStock(request):
   categorias = Categoria.objects.all()
