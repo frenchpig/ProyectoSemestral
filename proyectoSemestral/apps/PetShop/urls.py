@@ -6,5 +6,7 @@ urlpatterns = [
   path('agregarProducto',views.agregarProducto, name="agregar_productos"),
   path('edit/<sku>',views.cargarEdit),
   path('editarProducto/<sku>',views.editarProducto, name="editar_productos"),
-  path('delete/<sku>',views.eliminarProducto)
+  path('delete/<sku>',views.eliminarProducto),
+  path('deletecat/<id>',views.eliminarCategoria),
+  path('agregarCategoria',views.agregarCategoria, name="agregar_categorias")
 ]

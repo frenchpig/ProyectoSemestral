@@ -8,28 +8,55 @@
 {% endblock %}
 
 {% block body %}
-
-  <!-- Control de Stock -->
-  <div class="container mt-2">
-    <!-- Modal -->
-    <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Producto</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- Modal Categoria -->
+  <div class="modal fade" id="modalCategoria" tabindex="-1" aria-labelledby="lblModalCategoria" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="lblModalCategoria">Categorias</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <label for="delCategoria">Eliminar Categoria:</label>
+            <div class="col">
+              <select id="delCategoria" class="form-select" aria-label="Default select example" name="delCategoria">
+                <option value="0" selected disabled>Seleccionar...</option>
+                {% for c in cates %}
+                  <option value="{{c.categoria_id}}">{{c.nombre}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col">
+              <a id="btnDelCategoria" class="btn btn-rojo" href="#"><i class="bi bi-trash3-fill"></i></a>
+            </div>
           </div>
-          <div class="modal-body">
-            ¿Seguro que quieres eliminar este producto?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-danger">Eliminar</button>
-          </div>
+          <form action="{% url 'agregar_categorias' %}" id="formAgregarCategorias" class="row d-flex justify-content-center needs-validation" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
+            <div class="row">
+              <label for="addCategoria">Agregar Categoria:</label>
+              <div class="col">
+                <input type="text" class="form-control" id="catNombre" maxlength="60" required name="catNombre">
+                <div class="invalid-feedback">
+                  Porfavor ingrese el nombre de la categoria.
+                </div>
+              </div>
+              <div class="col">
+                <button id="botonAgregarCategoria" type="submit" class="btn btn-verde"><i class="bi bi-plus"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
         </div>
       </div>
     </div>
-    <!-- Fin Modal -->
+  </div>
+  
+  <!-- Fin Modal Categoria -->
+
+
+  <!-- Control de Stock -->
+  <div class="container mt-2">
     <!-- Titulo de la seccion -->
     <div class="row text-center">
       <p class="fs-1">
@@ -63,16 +90,23 @@
           Porfavor ingrese cantidad en stock de producto.
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
         <label for="prodCategoria">Categoria: </label>
-        <select id="prodCategoria" class="form-select" aria-label="Default select example" name="prodCategoria">
-          <option value="0" selected disabled>Seleccionar...</option>
-          {% for c in cates %}
-            <option value="{{c.categoria_id}}">{{c.nombre}}</option>
-          {% endfor %}
-        </select>
-        <div class="invalid-feedback">
-          Porfavor seleccione una categoria.
+        <div class="row ">
+          <div class="col-10">
+            <select id="prodCategoria" class="form-select" aria-label="Default select example" name="prodCategoria">
+              <option value="0" selected disabled>Seleccionar...</option>
+              {% for c in cates %}
+                <option value="{{c.categoria_id}}">{{c.nombre}}</option>
+              {% endfor %}
+            </select>
+            <div class="invalid-feedback">
+              Porfavor seleccione una categoria.
+            </div>
+          </div>
+          <div class="col-2">
+            <button onclick="reinicarModalCategoria()" class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#modalCategoria"><i class="bi bi-gear-fill"></i></button>
+          </div>
         </div>
       </div>
       <div class="col-md-12">

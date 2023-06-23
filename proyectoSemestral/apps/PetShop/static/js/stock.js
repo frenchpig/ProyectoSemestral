@@ -13,6 +13,36 @@ $(function () {
 })
 
 
+
+const catEliminar  = document.getElementById('delCategoria')
+function reinicarModalCategoria(){
+  catEliminar.value=0;
+  const btnEliminar = $('#btnDelCategoria');
+  btnEliminar.attr('href',"#");
+}
+catEliminar.addEventListener('change', function(){
+  let valorSeleccionado = catEliminar.value;
+  const btnEliminar = $('#btnDelCategoria');
+  let link = 'deletecat/'+valorSeleccionado;
+  btnEliminar.attr('href',link);
+});
+
+const formularioCat = document.getElementById('formAgregarCategorias');
+formularioCat.addEventListener('submit', function(event){
+  event.preventDefault();
+  let categoria = $("#catNombre");
+  if (categoria.val().length == 0){
+    categoria.removeClass("is-valid");
+    categoria.addClass("is-invalid");
+  }else{
+    categoria.removeClass("is-invalid");
+    categoria.addClass("is-valid");
+  }
+  if (categoria.hasClass("is-valid")) {
+    this.submit();
+  }
+});
+
 const formulario = document.getElementById('formAgregarProductos');
 formulario.addEventListener('submit', function(event){
   event.preventDefault();

@@ -47,10 +47,7 @@ def agregarProducto(request):
   except:
     estado=False
   if estado:
-    print('Pass: Producto guardado')
     Producto.objects.create(nombre=v_nombre,precio=v_precio,stock=v_stock,descripcion=v_descripcion,image=v_image,categoria_id=v_categoria)
-  else:
-    print('Error: Parametro ingresado incorrectamente.')
   return redirect('/stock')
 
 
@@ -116,4 +113,18 @@ def eliminarProducto(request,sku):
   ruta_imagen = os.path.join(settings.MEDIA_ROOT, str(productoBD.image))
   os.remove(ruta_imagen)
   productoBD.delete()
+  return redirect('/stock')
+
+def agregarCategoria(request):
+  estado = True
+  v_nombre = request.POST['catNombre']
+  if len(v_nombre)==0:
+    estado=False
+  if estado:
+    Categoria.objects.create(nombre=v_nombre)
+  return redirect('/stock')
+
+def eliminarCategoria(request,id):
+  categoriaBD = Categoria.objects.get(categoria_id=id)
+  categoriaBD.delete()
   return redirect('/stock')
