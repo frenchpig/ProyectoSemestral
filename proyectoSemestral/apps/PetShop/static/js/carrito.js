@@ -106,3 +106,9 @@ function comprobarStock(sku) {
       });
   });
 }
+
+function pagar(){
+  arrayVacio=[];
+  localStorage.setItem("carrito",JSON.stringify(arrayVacio));
+  cargarCarrito();
+}
