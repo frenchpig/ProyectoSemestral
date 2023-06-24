@@ -4,12 +4,24 @@ import os
 from django.conf import settings
 from django.http import HttpResponse,JsonResponse
 import json
+import random
+import string
 
 # Create your views here.
 
 def cargarInicio(request):
   productos = Producto.objects.all()
   return render(request, "inicio.html",{"prod":productos})
+
+def cargarInicioLogged(request,token):
+  productos = Producto.objects.all()
+  return render(request, "inicioLogged.html",{"prod":productos,"token":token})
+
+def cargarRegistrar(request):
+  return render(request, "registrar.html")
+
+def cargarLogin(request):
+  return render(request, "login.html")
 
 def cargarStock(request):
   categorias = Categoria.objects.all()
@@ -98,7 +110,6 @@ def editarProducto(request,sku):
         v_image = productoBD.image
 
   if estado:
-    print("Pass: Producto editado exitosamente")
     productoBD.nombre = v_nombre
     productoBD.descripcion = v_descripcion
     productoBD.stock = v_stock
@@ -106,8 +117,6 @@ def editarProducto(request,sku):
     productoBD.image = v_image
     productoBD.categoria_id = v_categoria
     productoBD.save()
-  else:
-    print("Error: No se ha podido editar el producto")
 
   return redirect('/stock')
 
@@ -135,3 +144,24 @@ def eliminarCategoria(request,id):
 def comprobarStock(request):
   data = json.loads(request.body)
   print(data)
+
+def registrarUsuario(request):
+  v_username = request.POST['username']
+  v_email = request.POST['email']
+  v_pass = request.POST['password']
+  caracteres = string.ascii_letters + string.digits
+  v_token = ''.join(random.choice(caracteres) for _ in range(8))
+  v_tipo = TipoUsuario.objects.get(tipo_id=2)
+  tokenExiste = True
+  while tokenExiste:
+    try:
+      usuario = Usuario.objects.get(userToken=v_token)
+      v_token = ''.join(random.choice(caracteres) for _ in range(8))
+      tokenExiste=True
+    except:
+      tokenExiste=False
+  try:
+    Usuario.objects.create(user=v_username,mail=v_email,contrasenna=v_pass,userToken=v_token,tipo_id=v_tipo)
+  except:
+    print('Error: Usuario es imposible de crear')
+  return redirect('/')

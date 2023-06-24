@@ -41,10 +41,8 @@ class Usuario(models.Model):
   user = models.CharField(max_length=20,primary_key=True)
   mail = models.CharField(max_length=200,null=False)
   contrasenna = models.CharField(max_length=15,null=False)
-  userToken = models.CharField(max_length=30,null=False)
+  userToken = models.CharField(max_length=30,null=False, unique=True)
   tipo_id = models.ForeignKey(TipoUsuario,on_delete=models.CASCADE)
   def __str__(self):
     txt = "Usuario: {0} - Mail: {1} - Tipo: {2}"
     return txt.format(self.user,self.mail,self.tipo_id)
-
-

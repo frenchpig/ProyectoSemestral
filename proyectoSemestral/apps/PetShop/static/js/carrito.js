@@ -1,11 +1,3 @@
-
-/* <tr>
-  <th scope="row">1</th>
-  <td>Puppy Razas Mediana</td>
-  <td><input class="form-control" type="number"></td>
-  <td><button id="0El" class="btn btn-rojo"><i class="bi bi-trash3-fill"></i></button></td>
-  <td>$$$</td>
-</tr> */
 //Carga el carrito en su off canvas
 function cargarCarrito() {
   comprobarStorage("carrito");
@@ -50,6 +42,13 @@ function eliminarCarrito(sku, cantidad){
   let indice = carrito.findIndex(function(objeto){return objeto.sku===sku});
   carrito.splice(indice,1);
   localStorage.setItem("carrito",JSON.stringify(carrito));
+  const toast = document.getElementById('liveToast');
+  const tituloToast = document.getElementById('tituloToast');
+  tituloToast.textContent = 'Producto eliminado (ㅅ´ ˘ `)'
+  const bodyToast = document.getElementById('bodyToast');
+  bodyToast.textContent = 'Se a eliminado un producto de tu carrito'
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast);
+  toastBootstrap.show();
   fetch(`http://127.0.0.1:8000/api/retornarStock/${sku}/${cantidad}`)
   .then(response => response.json())
     .then(data => {
@@ -60,9 +59,27 @@ function eliminarCarrito(sku, cantidad){
   cargarCarrito();
 }
 
+const toastTrigger = document.getElementById('liveToastBtn')
+  const toastLiveExample = document.getElementById('liveToast')
+
+  if (toastTrigger) {
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    toastTrigger.addEventListener('click', () => {
+      toastBootstrap.show()
+    })
+  }
+
+
 async function agregarCarrito(sku){
   let estado = await comprobarStock(sku);
   if (estado) {
+    const toast = document.getElementById('liveToast');
+    const tituloToast = document.getElementById('tituloToast');
+    tituloToast.textContent = 'Producto Agregado! ٩(^ᗜ^ )و ´-'
+    const bodyToast = document.getElementById('bodyToast');
+    bodyToast.textContent = 'Se a agregado un producto a tu carrito'
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast);
+    toastBootstrap.show();
     fetch(`http://127.0.0.1:8000/api/producto/${sku}`)
     .then(response => response.json())
     .then(data => {
@@ -89,6 +106,14 @@ async function agregarCarrito(sku){
     .catch(error => {
       console.log(error);
     });
+  }else{
+    const toast = document.getElementById('liveToast');
+    const tituloToast = document.getElementById('tituloToast');
+    tituloToast.textContent = 'Producto sin Stock (◡︵◡)'
+    const bodyToast = document.getElementById('bodyToast');
+    bodyToast.textContent = 'Se acabaron las unidades de este producto'
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast);
+    toastBootstrap.show();
   }
 }
 

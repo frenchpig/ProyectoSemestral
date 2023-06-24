@@ -1,4 +1,10 @@
 $(function () {
+  let navMas = $("#navMas");
+  navMas.remove();
+  let navLogReg = $("#navLogReg");
+  navLogReg.remove();
+  let navCarrito = $("#navCarrito");
+  navCarrito.remove();
   $("#tabla tr").each(function() {
     var fila = $(this);
     let contador = 0

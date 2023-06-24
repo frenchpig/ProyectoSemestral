@@ -68,17 +68,43 @@ function climatologia(latitud, longitud){
     })
 }
 
-//Elimina un item completo del Carrito
-function eliminarDeCarrito(id){
-  let carrito = JSON.parse(localStorage.getItem("carrito"));
-  carrito.splice(id,1);
-  localStorage.setItem("carrito",JSON.stringify(carrito));
-  cargarCarrito();
+
+function comprobarPermisos(){
+  let ruta = window.location.pathname;
+  let partes = ruta.split('/');
+  let token = partes[partes.length-1];
+  fetch(`http://127.0.0.1:8000/api/conseguirPermisos/${token}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.tipo==2) {
+        let navLogReg = $("#navLogReg");
+        let navAdmin = $("#navAdmin");
+        let navTienda = $("#navTienda");
+        let navContacto = $("#navContacto");
+        let rutaTienda = ruta+"#tienda";
+        let rutaContacto = ruta+"#contactos";
+        navTienda.attr('href',rutaTienda);
+        navContacto.attr('href',rutaContacto);
+        navLogReg.remove();
+        navAdmin.remove();
+        let menuDropdown = $('#navDropdownMas');
+        const opcion = `
+        <li>
+          <a id="navSalir" class="dropdown-item" href="/">Salir</a>
+        </li>
+        `;
+        menuDropdown.append(opcion);
+        
+      }
+      console.log(data.tipo);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
 
 $(function () {
   conseguirUbicacion();
   cargarCarrito();
-  let navAdmin = $("#navAdmin");
-  navAdmin.remove();
+  comprobarPermisos();
 });

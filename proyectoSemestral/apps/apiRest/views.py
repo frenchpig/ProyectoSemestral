@@ -41,3 +41,26 @@ class RetornarStock(View):
       producto.stock = stockNuevo
       producto.save()
     return JsonResponse({'estado':estado})
+
+class validarUsuario(View):
+  def get(self,request,user,password):
+    estado = True
+    try:
+      userBD = Usuario.objects.get(user=user)
+      if userBD.contrasenna != password:
+        estado = False
+    except:
+      estado = False
+    return JsonResponse({'estado':estado})
+  
+class conseguirToken(View):
+  def get(self,request,user):
+    userBD = Usuario.objects.get(user=user)
+    token = userBD.userToken
+    return JsonResponse({'token':token})
+
+class consultarPermiso(View):
+  def get(self,request,token):
+    userBD = Usuario.objects.get(userToken=token)
+    tipo = userBD.tipo_id.tipo_id
+    return JsonResponse({'tipo':tipo})
