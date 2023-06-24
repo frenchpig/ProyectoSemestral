@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import *
 import os
 from django.conf import settings
+from django.http import HttpResponse,JsonResponse
+import json
 
 # Create your views here.
 
@@ -129,3 +131,7 @@ def eliminarCategoria(request,id):
   categoriaBD = Categoria.objects.get(categoria_id=id)
   categoriaBD.delete()
   return redirect('/stock')
+
+def comprobarStock(request):
+  data = json.loads(request.body)
+  print(data)

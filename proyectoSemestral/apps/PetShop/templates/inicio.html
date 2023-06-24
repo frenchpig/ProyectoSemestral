@@ -70,6 +70,7 @@
           <p class="fs-3">Productos</p>
         </div>
         <div class="row d-flex" id="tiendaLlenar">
+          
           {% for p in prod %}
           <div class="col-md-4">
             <div class="card" style="width: 18rem;">
@@ -77,7 +78,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{p.nombre}}</h5>
                 <p class="card-text">{{p.descripcion}}</p>
-                <a href="#" class="btn btn-verde">${{ p.precio|floatformat:0|format_price }}</a>
+                <a onclick="agregarCarrito(this.id)" id="{{p.sku}}" class="btn btn-verde">${{ p.precio|floatformat:0|format_price }}</a>
               </div>
             </div>
           </div>
@@ -115,4 +116,6 @@
 
 {% block script %}
   <script src="{% static 'js/inicio.js'%}"></script>
+  {% csrf_token %}
+  <script src="{% static 'js/carrito.js'%}"></script>
 {% endblock %}
