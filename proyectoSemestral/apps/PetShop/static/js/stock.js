@@ -1,3 +1,7 @@
+let ruta = window.location.pathname;
+let partes = ruta.split('/');
+let token = partes[partes.length-1];
+
 $(function () {
   let navMas = $("#navMas");
   navMas.remove();
@@ -5,6 +9,11 @@ $(function () {
   navLogReg.remove();
   let navCarrito = $("#navCarrito");
   navCarrito.remove();
+  let navInicio = $("#navInicio");
+  let navLogo = $("#navLogo");
+  let link = '/user/'+token;
+  navInicio.attr('href',link);
+  navLogo.attr('href',link);
   $("#tabla tr").each(function() {
     var fila = $(this);
     let contador = 0
@@ -18,18 +27,18 @@ $(function () {
   });
 })
 
-
-
 const catEliminar  = document.getElementById('delCategoria')
 function reinicarModalCategoria(){
   catEliminar.value=0;
   const btnEliminar = $('#btnDelCategoria');
   btnEliminar.attr('href',"#");
 }
+
 catEliminar.addEventListener('change', function(){
   let valorSeleccionado = catEliminar.value;
   const btnEliminar = $('#btnDelCategoria');
-  let link = 'deletecat/'+valorSeleccionado;
+  let link = '/deletecat/'+valorSeleccionado+'/'+token;
+  console.log(link);
   btnEliminar.attr('href',link);
 });
 

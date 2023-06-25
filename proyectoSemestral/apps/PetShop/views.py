@@ -23,13 +23,13 @@ def cargarRegistrar(request):
 def cargarLogin(request):
   return render(request, "login.html")
 
-def cargarStock(request):
+def cargarStock(request,token):
   categorias = Categoria.objects.all()
   productos = Producto.objects.all()
-  return render(request, "stock.html",{"cates":categorias,"prod":productos})
+  return render(request, "stock.html",{"cates":categorias,"prod":productos,'token':token})
 
 #Funcion para agregar producto + sus validaciones
-def agregarProducto(request):
+def agregarProducto(request,token):
   estado = True
   #Comprobacion de nombre
   v_nombre = request.POST['prodNombre']
@@ -63,18 +63,18 @@ def agregarProducto(request):
     estado=False
   if estado:
     Producto.objects.create(nombre=v_nombre,precio=v_precio,stock=v_stock,descripcion=v_descripcion,image=v_image,categoria_id=v_categoria)
-  return redirect('/stock')
+  return redirect(f'/stock/{token}')
 
 
-def cargarEdit(request,sku):
+def cargarEdit(request,sku,token):
   categorias = Categoria.objects.all()
   producto = Producto.objects.get(sku=sku)
   categoria=producto.categoria_id
   categoriaId=Categoria.objects.get(categoria_id=categoria.categoria_id).categoria_id
 
-  return render(request, "edit.html",{"cates":categorias,"prod":producto,"cateProd":categoriaId})
+  return render(request, "edit.html",{"cates":categorias,"prod":producto,"cateProd":categoriaId,"token":token})
 
-def editarProducto(request,sku):
+def editarProducto(request,sku,token):
   estado = True
   productoBD = Producto.objects.get(sku = sku)
   #Comprobacion de nombre
@@ -118,28 +118,28 @@ def editarProducto(request,sku):
     productoBD.categoria_id = v_categoria
     productoBD.save()
 
-  return redirect('/stock')
+  return redirect(f'/stock/{token}')
 
-def eliminarProducto(request,sku):
+def eliminarProducto(request,sku,token):
   productoBD = Producto.objects.get(sku=sku)
   ruta_imagen = os.path.join(settings.MEDIA_ROOT, str(productoBD.image))
   os.remove(ruta_imagen)
   productoBD.delete()
-  return redirect('/stock')
+  return redirect(f'/stock/{token}')
 
-def agregarCategoria(request):
+def agregarCategoria(request,token):
   estado = True
   v_nombre = request.POST['catNombre']
   if len(v_nombre)==0:
     estado=False
   if estado:
     Categoria.objects.create(nombre=v_nombre)
-  return redirect('/stock')
+  return redirect(f'/stock/{token}')
 
-def eliminarCategoria(request,id):
+def eliminarCategoria(request,id,token):
   categoriaBD = Categoria.objects.get(categoria_id=id)
   categoriaBD.delete()
-  return redirect('/stock')
+  return redirect(f'/stock/{token}')
 
 def comprobarStock(request):
   data = json.loads(request.body)

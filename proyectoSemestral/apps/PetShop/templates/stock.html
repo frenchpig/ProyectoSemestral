@@ -31,7 +31,7 @@
               <a id="btnDelCategoria" class="btn btn-rojo" href="#"><i class="bi bi-trash3-fill"></i></a>
             </div>
           </div>
-          <form action="{% url 'agregar_categorias' %}" id="formAgregarCategorias" class="row d-flex justify-content-center needs-validation" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
+          <form action="/agregarCategoria/{{token}}" id="formAgregarCategorias" class="row d-flex justify-content-center needs-validation" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
             <div class="row">
               <label for="addCategoria">Agregar Categoria:</label>
               <div class="col">
@@ -68,7 +68,7 @@
     <div class="row">
       <h3>Agregar Producto</h3>
     </div>
-    <form action="{% url 'agregar_productos' %}" id="formAgregarProductos" class="row d-flex justify-content-center needs-validation" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
+    <form action="/agregarProducto/{{token}}" id="formAgregarProductos" class="row d-flex justify-content-center needs-validation" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
       <div class="col-md-4">
         <label for="prodNombre">Nombre:</label>
         <input type="text" class="form-control" id="prodNombre" placeholder="Ingrese nombre del producto..." maxlength="44" required name="prodNombre">
@@ -162,8 +162,8 @@
             <td>{{p.stock}}</td>
             <td>{{p.categoria_id.nombre}}</td>
             <td>
-              <a href="/edit/{{p.sku}}" class="btn btn-azul my-1"><i class="bi bi-pencil-square"></i></a>
-              <a id="btnEliminar" href="/delete/{{p.sku}}" class="btn btn-rojo my-1"><i class="bi bi-trash3-fill"></i></a>
+              <a href="/edit/{{p.sku}}/{{token}}" class="btn btn-azul my-1"><i class="bi bi-pencil-square"></i></a>
+              <a id="btnEliminar" href="/delete/{{p.sku}}/{{token}}" class="btn btn-rojo my-1"><i class="bi bi-trash3-fill"></i></a>
             </td>
           </tr>
           {% endfor %}
