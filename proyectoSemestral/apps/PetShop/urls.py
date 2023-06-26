@@ -15,5 +15,8 @@ urlpatterns = [
   path('delete/<sku>/<token>',views.eliminarProducto),
   path('deletecat/<id>/<token>',views.eliminarCategoria),
   path('agregarCategoria/<token>',views.agregarCategoria, name="agregar_categorias"),
-  path('carrito',views.comprobarStock)
+  path('carrito',views.comprobarStock),
+  path('users/<token>',views.cargarUsuarios),
+  path('addUsers/<token>',views.agregarUsuario),
+  path('deleteUser/<token>/<username>',views.eliminarUsuarioAdmin)
 ]

@@ -9,11 +9,15 @@ $(function () {
   navLogReg.remove();
   let navCarrito = $("#navCarrito");
   navCarrito.remove();
+  let navOpciones = $("#navOpciones");
+  navOpciones.remove();
   let navInicio = $("#navInicio");
   let navLogo = $("#navLogo");
   let link = '/user/'+token;
   navInicio.attr('href',link);
   navLogo.attr('href',link);
+  let navUser = $("#navUser");
+  navUser.attr('href',`/users/${token}`)
   $("#tabla tr").each(function() {
     var fila = $(this);
     let contador = 0

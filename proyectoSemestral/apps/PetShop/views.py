@@ -29,6 +29,11 @@ def cargarStock(request,token):
   productos = Producto.objects.all()
   return render(request, "stock.html",{"cates":categorias,"prod":productos,'token':token})
 
+def cargarUsuarios(request,token):
+  usuarios = Usuario.objects.all()
+  tipos = TipoUsuario.objects.all()
+  return render(request, "usuarios.html",{"users":usuarios,"tipos":tipos,"token":token})
+
 #Funcion para agregar producto + sus validaciones
 def agregarProducto(request,token):
   estado = True
@@ -178,3 +183,20 @@ def eliminarUsuario(request,token):
   usuarioBD = Usuario.objects.get(userToken=token)
   usuarioBD.delete()
   return redirect('/')
+
+def agregarUsuario(request,token):
+  print(request.POST)
+  v_username = request.POST['username']
+  v_email = request.POST['email']
+  v_password = request.POST['password']
+  v_tipoid = request.POST['type']
+  v_tipo = TipoUsuario.objects.get(tipo_id=v_tipoid)
+  caracteres = string.ascii_letters + string.digits
+  v_token = ''.join(random.choice(caracteres) for _ in range(8))
+  Usuario.objects.create(user=v_username,mail=v_email,contrasenna=v_password,userToken=v_token,tipo_id=v_tipo)
+  return redirect(f'/users/{token}')
+
+def eliminarUsuarioAdmin(request,token,username):
+  usuarioBD = Usuario.objects.get(user=username)
+  usuarioBD.delete()
+  return redirect(f'/users/{token}')

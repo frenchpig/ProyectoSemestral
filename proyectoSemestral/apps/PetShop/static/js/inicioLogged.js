@@ -105,6 +105,8 @@ function comprobarPermisos(){
         navLogReg.remove();
         let navStock = $("#navStock");
         navStock.attr('href',`/stock/${token}`);
+        let navUser = $("#navUser");
+        navUser.attr('href',`/users/${token}`)
       }
     })
     .catch(error => {
@@ -166,37 +168,4 @@ $(function () {
   conseguirUbicacion();
   cargarCarrito();
   comprobarPermisos();
-  // $('#userEditForm').submit(function(event) {
-  //   event.preventDefault();
-    // let email = $('#email');
-    // let password = $('#password');
-    // let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // let correoValido = false;
-    // if (regex.test(email.val())){
-    //   correoValido = true;
-    // }
-
-    // if (email.val().length==0) {
-    //   email.removeClass("is-valid");
-    //   email.addClass("is-invalid");
-    // }else if (correoValido){
-    //   email.removeClass("is-valid");
-    //   email.addClass("is-invalid");
-    // }else{
-    //   email.removeClass("is-invalid");
-    //   email.addClass("is-valid");
-    // }
-
-    // if (password.val().length==0){
-    //   password.removeClass("is-valid");
-    //   password.addClass("is-invalid");
-    // }else{
-    //   password.removeClass("is-invalid");
-    //   password.addClass("is-valid");
-    // }
-
-    // if(email.hasClass("is-valid")&&password.hasClass("is-valid")){
-    //   this.submit;
-    // }
-  // });
 });

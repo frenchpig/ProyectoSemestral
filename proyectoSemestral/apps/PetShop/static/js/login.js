@@ -7,6 +7,8 @@ $(document).ready(function () {
   navCarrito.remove();
   let navAdmin = $("#navAdmin");
   navAdmin.remove();
+  let navOpciones = $("#navOpciones");
+  navOpciones.remove();
 });
 const formulario = document.getElementById('loginForm');
 formulario.addEventListener('submit',async function(event){
