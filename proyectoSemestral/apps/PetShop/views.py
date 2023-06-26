@@ -15,7 +15,8 @@ def cargarInicio(request):
 
 def cargarInicioLogged(request,token):
   productos = Producto.objects.all()
-  return render(request, "inicioLogged.html",{"prod":productos,"token":token})
+  usuario = Usuario.objects.get(userToken=token)
+  return render(request, "inicioLogged.html",{"prod":productos,"token":token,"userData":usuario})
 
 def cargarRegistrar(request):
   return render(request, "registrar.html")
@@ -164,4 +165,16 @@ def registrarUsuario(request):
     Usuario.objects.create(user=v_username,mail=v_email,contrasenna=v_pass,userToken=v_token,tipo_id=v_tipo)
   except:
     print('Error: Usuario es imposible de crear')
+  return redirect('/')
+
+def modificarUsuario(request,token):
+  usuarioBD = Usuario.objects.get(userToken=token)
+  usuarioBD.mail = request.POST['email']
+  usuarioBD.contrasenna = request.POST['password']
+  usuarioBD.save()
+  return redirect(f'/user/{token}')
+
+def eliminarUsuario(request,token):
+  usuarioBD = Usuario.objects.get(userToken=token)
+  usuarioBD.delete()
   return redirect('/')

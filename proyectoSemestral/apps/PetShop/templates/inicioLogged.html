@@ -130,6 +130,45 @@
     </div>  
     <!-- Fin Carrito de Compra -->
 
+    <!-- Modal edicion Usuario -->
+    <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userEditModalLabel">Editar Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/modificarUsuario/{{token}}" method="POST" id="userEditForm" novalidate> {% csrf_token %}
+              <div class="form-group">
+                <label for="username">Usuario</label>
+                <input value="{{userData.user}}" type="text" class="form-control" id="username" name="username" maxlength="20" readonly>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input value="{{userData.mail}}" type="email" class="form-control" id="email" name="email" maxlength="200" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <div class="input-group">
+                  <input value="{{userData.contrasenna}}" type="password" class="form-control" id="password" name="password" maxlength="15" required>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="toggle">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a type="button" href="/eliminarUsuario/{{token}}" class="btn btn-danger">Eliminar Cuenta</a>
+            <a type="button" id="btnGuardarCambios" class="btn btn-success">Guardar Cambios</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin Modal edicion Usuario -->
 {% endblock %}
 
 {% block script %}

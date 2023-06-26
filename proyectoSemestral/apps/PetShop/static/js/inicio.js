@@ -81,4 +81,6 @@ $(function () {
   cargarCarrito();
   let navAdmin = $("#navAdmin");
   navAdmin.remove();
+  let navOpciones = $("#navOpciones");
+  navOpciones.remove();
 });
