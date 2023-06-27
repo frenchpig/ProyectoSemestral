@@ -42,7 +42,6 @@ catEliminar.addEventListener('change', function(){
   let valorSeleccionado = catEliminar.value;
   const btnEliminar = $('#btnDelCategoria');
   let link = '/deletecat/'+valorSeleccionado+'/'+token;
-  console.log(link);
   btnEliminar.attr('href',link);
 });
 

@@ -33,7 +33,7 @@
           </div>
           <form action="/agregarCategoria/{{token}}" id="formAgregarCategorias" class="row d-flex justify-content-center needs-validation" method="POST" enctype="multipart/form-data" novalidate> {% csrf_token %}
             <div class="row">
-              <label for="addCategoria">Agregar Categoria:</label>
+              <label for="catNombre">Agregar Categoria:</label>
               <div class="col">
                 <input type="text" class="form-control" id="catNombre" maxlength="60" required name="catNombre">
                 <div class="invalid-feedback">

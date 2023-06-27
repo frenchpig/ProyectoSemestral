@@ -1,6 +1,6 @@
 let ruta = window.location.pathname;
 let partes = ruta.split('/');
-let token = partes[partes.length - 1];
+let token = partes[partes.length - 2];
 $(function () {
   let navMas = $("#navMas");
   navMas.remove();
@@ -37,12 +37,6 @@ $('#toggle').click(function() {
 const formulario = document.getElementById('formAddUser');
 formulario.addEventListener('submit', function (event) {
   event.preventDefault();
-  let username = $('#username');
-  if (username.val() === '') {
-    username.removeClass('is-valid').addClass('is-invalid');
-  } else {
-    username.removeClass('is-invalid').addClass('is-valid');
-  }
   let email = $('#email');
   let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   let emailValue = email.val();
@@ -65,7 +59,7 @@ formulario.addEventListener('submit', function (event) {
   }
 
 
-  if (username.hasClass('is-valid') && email.hasClass('is-valid') && password.hasClass('is-valid') && type.hasClass('is-valid')) {
+  if (email.hasClass('is-valid') && password.hasClass('is-valid') && type.hasClass('is-valid')) {
     this.submit();
   }
 });

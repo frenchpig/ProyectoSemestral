@@ -18,5 +18,7 @@ urlpatterns = [
   path('carrito',views.comprobarStock),
   path('users/<token>',views.cargarUsuarios),
   path('addUsers/<token>',views.agregarUsuario),
-  path('deleteUser/<token>/<username>',views.eliminarUsuarioAdmin)
+  path('deleteUser/<token>/<username>',views.eliminarUsuarioAdmin),
+  path('editUser/<token>/<username>',views.cargarEditarUser),
+  path('saveEditUser/<token>/<username>',views.saveEditUsuario)
 ]

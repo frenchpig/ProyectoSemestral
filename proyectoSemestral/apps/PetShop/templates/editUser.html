@@ -8,24 +8,24 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container">
+  <div class="container d-flex flex-column min-vh-100">
     <div class="row">
       <div class="col">
         <h1>Usuarios</h1>
       </div>
     </div>
 
-    <form id="formAddUser" action="/addUsers/{{token}}" method="POST" class="needs-validation row" novalidate> {% csrf_token %}
+    <form id="formAddUser" action="/saveEditUser/{{token}}/{{userData.user}}" method="POST" class="needs-validation row" novalidate> {% csrf_token %}
       <div class="form-group col-xl-3">
         <label for="username">Username:</label>
-        <input type="text" class="form-control" id="username" name="username" maxlength="20" required>
+        <input value="{{userData.user}}" type="text" class="form-control" id="username" name="username" maxlength="20" readonly required>
         <div class="invalid-feedback">
           Por favor, ingresa un nombre de usuario (máximo 20 caracteres).
         </div>
       </div>
       <div class="form-group col-xl-6">
         <label for="email">Mail:</label>
-        <input type="email" class="form-control" id="email" name="email" maxlength="200" required>
+        <input value="{{userData.mail}}" type="email" class="form-control" id="email" name="email" maxlength="200" required>
         <div class="invalid-feedback">
           Por favor, ingresa un correo electrónico válido (máximo 200 caracteres).
         </div>
@@ -33,7 +33,7 @@
       <div class="form-group col-xl-3">
         <label for="password">Contraseña:</label>
         <div class="input-group">
-          <input type="password" class="form-control" id="password" name="password" maxlength="15" required>
+          <input value="{{userData.contrasenna}}" type="password" class="form-control" id="password" name="password" maxlength="15" required>
           <button class="btn btn-outline-secondary" type="button" id="toggle">
             <i class="bi bi-eye"></i>
           </button>
@@ -47,7 +47,7 @@
         <select class="form-control" id="type" name="type" required>
           <option value="0" selected disabled>Seleccionar...</option>
           {% for t in tipos %}
-          <option value="{{t.tipo_id}}">{{t.nombre}}</option>
+          <option value="{{t.tipo_id}}" {% if t.tipo_id == userData.tipo_id.tipo_id %}selected{% endif %}>{{t.nombre}}</option>
           {% endfor %}
         </select>
         <div class="invalid-feedback">
@@ -55,38 +55,12 @@
         </div>
       </div>
       <div class="col d-flex justify-content-center my-3">
-        <button class="btn btn-azul w-75" type="submit">Crear Usuario</button>
+        <button class="btn btn-azul w-75" type="submit">Guardar Cambios</button>
       </div>
     </form>
-    
-    <table id="tablaUsuarios" class="table">
-      <thead>
-        <tr>
-          <th scope="col">Username</th>
-          <th scope="col">Email</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for u in users %}
-        <tr>
-          <th scope="row">{{u.user}}</th>
-          <td>{{u.mail}}</td>
-          <td>{{u.tipo_id.nombre}}</td>
-          <td>
-            <a href="/editUser/{{token}}/{{u.user}}" class="btn btn-azul"><i class="bi bi-pencil-square"></i></a>
-            <a href="/deleteUser/{{token}}/{{u.user}}" class="btn btn-rojo"><i class="bi bi-trash3-fill"></i></a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-  </div>
-  <div class="d-flex flex-fill"></div>
+    <div class="d-flex flex-fill"></div>
 {% endblock %}
 
 {% block script %}
-  <script src="{% static 'js/usuarios.js'%}"></script>
+  <script src="{% static 'js/editUser.js'%}"></script>
 {% endblock %}

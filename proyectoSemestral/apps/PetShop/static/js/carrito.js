@@ -83,7 +83,6 @@ async function agregarCarrito(sku){
     fetch(`http://127.0.0.1:8000/api/producto/${sku}`)
     .then(response => response.json())
     .then(data => {
-      console.log(estado);
       comprobarStorage("carrito");
       let carrito = JSON.parse(localStorage.getItem("carrito"));
       let filtro = carrito.filter(e => e.sku == data[0].pk);

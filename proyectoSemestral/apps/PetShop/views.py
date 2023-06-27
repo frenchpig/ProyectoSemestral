@@ -21,6 +21,11 @@ def cargarInicioLogged(request,token):
 def cargarRegistrar(request):
   return render(request, "registrar.html")
 
+def cargarEditarUser(request,token,username):
+  usuarioBD = Usuario.objects.get(user=username)
+  tipos = TipoUsuario.objects.all()
+  return render(request, "editUser.html",{"token":token,"userData":usuarioBD,"tipos":tipos})
+
 def cargarLogin(request):
   return render(request, "login.html")
 
@@ -199,4 +204,12 @@ def agregarUsuario(request,token):
 def eliminarUsuarioAdmin(request,token,username):
   usuarioBD = Usuario.objects.get(user=username)
   usuarioBD.delete()
+  return redirect(f'/users/{token}')
+
+def saveEditUsuario(request,token,username):
+  usuarioBD = Usuario.objects.get(user=username)
+  usuarioBD.mail = request.POST['email']
+  usuarioBD.contrasenna = request.POST['password']
+  usuarioBD.tipo_id = TipoUsuario.objects.get(tipo_id=request.POST['type'])
+  usuarioBD.save()
   return redirect(f'/users/{token}')
