@@ -99,3 +99,9 @@
 label.error {
   color: #c23a22;
 }
+
+.footer-column{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
